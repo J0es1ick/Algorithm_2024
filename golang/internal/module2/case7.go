@@ -1,11 +1,8 @@
 package module2
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
-	"strings"
 )
 
 func Case7() {
@@ -16,14 +13,7 @@ func Case7() {
 	buckets := make([][]string, 10)
 
 	for i := 0; i < n; i++ {
-		reader := bufio.NewReader(os.Stdin)
-		line, err := reader.ReadString('\n')
-		if err != nil {
-			panic(err)
-		}
-		line = strings.TrimSuffix(line, "\n")
-		line = strings.TrimSuffix(line, "\r")
-		str[i] = line
+		fmt.Scan(&str[i])
 	}
 
 	fmt.Println("Initial array:")
