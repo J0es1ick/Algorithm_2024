@@ -10,7 +10,7 @@ import (
 	"isuct.ru/informatics2022/tests/helpers"
 )
 
-func TestBubbleSort(t *testing.T) {
+func TestCase1(t *testing.T) {
 	assert := assert.New(t)
 
 	defer func(v *os.File) { os.Stdin = v }(os.Stdin)
@@ -22,7 +22,7 @@ func TestBubbleSort(t *testing.T) {
 		os.Stdin = r
 		os.Stdout = w
 
-		module2.BubbleSort()
+		module2.Case1()
 		w.Close()
 		out, _ := io.ReadAll(r)
 		assert.Equal(`3 4 2 1
