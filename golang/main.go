@@ -2,30 +2,35 @@ package main
 
 import (
 	"fmt"
-	"hash/crc32"
+	"strings"
 )
 
-func minRepeatLength(s string) int {
-	for i := 1; i <= len(s); i++ {
-		if len(s)%i == 0 {
-			substr := s[:i]
-			repeats := len(s) / i
-			newStr := ""
-			for j := 0; j < repeats; j++ {
-				newStr += substr
-			}
-			if crc32.ChecksumIEEE([]byte(newStr)) == crc32.ChecksumIEEE([]byte(s)) {
-				return i
+func main() {
+	var n int
+	fmt.Scan(&n)
+
+	var arr []int
+	for i := 0; i < n; i++ {
+		var num int
+		fmt.Scan(&num)
+		arr = append(arr, num)
+	}
+
+	for i := 0; i < n; i++ {
+		var result int
+		left, right := i+1, n-1
+		for left <= right {
+			mid := (left + right) / 2
+			if arr[mid] < arr[i] {
+				arr[i] = mid
+				left = mid + 1
+			} else {
+				right = mid - 1
 			}
 		}
+		if result == n-1 {
+			arr[n-1] = -1
+		}
 	}
-	return len(s)
-}
-
-func main() {
-	var s string
-	fmt.Scanln(&s)
-
-	result := minRepeatLength(s)
-	fmt.Println(result)
+	fmt.Println(strings.Trim(fmt.Sprint(arr), "[]"))
 }
