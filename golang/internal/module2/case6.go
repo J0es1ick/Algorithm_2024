@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func convertString(arr []int, count int) ([]int, error) {
+func convertString(arr []int) ([]int, error) {
 	reader := bufio.NewReader(os.Stdin)
 	line, err := reader.ReadString('\n')
 	line = strings.TrimSuffix(line, "\n")
@@ -24,7 +24,7 @@ func Case6() {
 	var countOfKinds int
 	fmt.Scanln(&countOfKinds)
 	kinds := make([]int, countOfKinds)
-	kinds, err := convertString(kinds, countOfKinds)
+	kinds, err := convertString(kinds)
 	if err != nil {
 		panic(err)
 	}
@@ -32,7 +32,7 @@ func Case6() {
 	var countOfOrders int
 	fmt.Scanln(&countOfOrders)
 	orders := make([]int, countOfOrders)
-	orders, err = convertString(orders, countOfOrders)
+	orders, err = convertString(orders)
 	if err != nil {
 		panic(err)
 	}

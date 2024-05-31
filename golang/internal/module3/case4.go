@@ -1,8 +1,7 @@
-package main
+package module3
 
 import (
 	"fmt"
-	"hash/crc32"
 )
 
 func minRepeatLength(s string) int {
@@ -14,7 +13,7 @@ func minRepeatLength(s string) int {
 			for j := 0; j < repeats; j++ {
 				newStr += substr
 			}
-			if crc32.ChecksumIEEE([]byte(newStr)) == crc32.ChecksumIEEE([]byte(s)) {
+			if newStr == s {
 				return i
 			}
 		}
@@ -22,7 +21,7 @@ func minRepeatLength(s string) int {
 	return len(s)
 }
 
-func main() {
+func Case4() {
 	var s string
 	fmt.Scanln(&s)
 
